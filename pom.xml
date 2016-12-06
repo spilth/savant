@@ -63,7 +63,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.spilth.App</mainClass>
+                            <mainClass>org.spilth.Savant</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
