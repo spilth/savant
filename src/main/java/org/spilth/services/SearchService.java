@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.spilth.commands.SearchCommand;
 import org.spilth.models.Doc;
 import org.spilth.models.Results;
 
@@ -16,10 +17,16 @@ import static java.util.Comparator.comparing;
 import static org.apache.http.impl.client.HttpClients.createDefault;
 
 public class SearchService {
-    public void search(String searchTerm) throws IOException {
+    private final SearchCommand searchCommand;
+
+    public SearchService(SearchCommand searchCommand) {
+        this.searchCommand = searchCommand;
+    }
+
+    public void search() throws IOException {
         String url = format(
                 "http://search.maven.org/solrsearch/select?q=%s&rows=1000&wt=json",
-                searchTerm
+                searchCommand.getSearchTerm()
         );
 
         HttpGet httpGet = new HttpGet(url);
@@ -32,17 +39,35 @@ public class SearchService {
                 Results.class
         );
 
+        response.close();
+
         List<Doc> docs = results.getResponse().getDocs();
+
+        if (docs.isEmpty()) {
+            out.printf("No results found for `%s`%n", searchCommand.getSearchTerm());
+        } else {
+            printResults(docs);
+        }
+    }
+
+    private void printResults(List<Doc> docs) {
         docs.sort(comparing(Doc::getGroupId));
 
         for (Doc doc : docs) {
-            out.printf("<dependency>%n");
-            out.printf("    <groupId>%s</groupId>%n", doc.getGroupId());
-            out.printf("    <artifactId>%s</artifactId>%n", doc.getArtifactId());
-            out.printf("    <version>%s</version>%n", doc.getLatestVersion());
-            out.printf("</dependency>%n");
+            if (searchCommand.getFormat().equals("maven")) {
+                out.printf("<dependency>%n");
+                out.printf("    <groupId>%s</groupId>%n", doc.getGroupId());
+                out.printf("    <artifactId>%s</artifactId>%n", doc.getArtifactId());
+                out.printf("    <version>%s</version>%n", doc.getLatestVersion());
+                out.printf("</dependency>%n");
+            } else {
+                out.printf(
+                        "compile group: '%s', name: '%s', version: '%s'%n",
+                        doc.getGroupId(),
+                        doc.getArtifactId(),
+                        doc.getLatestVersion()
+                );
+            }
         }
-
-        response.close();
     }
 }

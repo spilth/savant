@@ -1,6 +1,6 @@
 # Savant
 
-A command-line tool to easily search Maven Central and get the `<dependency>` entries for your `pom.xml`.
+A command-line tool to easily search Maven Central and get a `<dependency>` entriy for your `pom.xml` or `compile` entry for your `build.gradle`.
 
 ## Getting Started
 
@@ -20,4 +20,8 @@ $ savant hamcrest-core
     <artifactId>org.ops4j.pax.tipi.hamcrest.core</artifactId>
     <version>1.3.0.1</version>
 </dependency>
+$ savant cucumber-junit --format gradle
+compile group: 'com.github.mkolisnyk', name: 'aerial-maven-cucumber-junit-archetype', version: '0.0.6.1'
+compile group: 'com.github.mkolisnyk', name: 'aerial-cucumber-junit-archetype', version: '0.0.6.1'
+compile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.5'
 ```

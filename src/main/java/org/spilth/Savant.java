@@ -1,5 +1,8 @@
 package org.spilth;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import org.spilth.commands.SearchCommand;
 import org.spilth.services.SearchService;
 
 import java.io.IOException;
@@ -12,8 +15,16 @@ public class Savant {
         if (args.length == 0) {
             out.println("Please provide a search term.");
         } else {
-            SearchService searchService = new SearchService();
-            searchService.search(args[0]);
+            try {
+                SearchCommand searchCommand = new SearchCommand();
+                new JCommander(searchCommand, args);
+
+                SearchService searchService = new SearchService(searchCommand);
+                searchService.search();
+
+            } catch (ParameterException parameterException) {
+                out.println(parameterException.getMessage());
+            }
         }
     }
 
