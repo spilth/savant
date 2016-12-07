@@ -1,6 +1,6 @@
 # Savant
 
-A command-line tool to easily search Maven Central and get a `<dependency>` entriy for your `pom.xml` or `compile` entry for your `build.gradle`.
+A command-line tool to easily search Maven Central and get a `<dependency>` entry for your `pom.xml` or `compile` entry for your `build.gradle`.
 
 ## Getting Started
 
