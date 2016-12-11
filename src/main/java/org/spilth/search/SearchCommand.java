@@ -1,6 +1,7 @@
-package org.spilth.commands;
+package org.spilth.search;
 
 import com.beust.jcommander.Parameter;
+import org.spilth.validators.FormatValidator;
 
 import java.util.List;
 

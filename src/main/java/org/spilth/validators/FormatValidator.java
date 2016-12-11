@@ -1,4 +1,4 @@
-package org.spilth.commands;
+package org.spilth.validators;
 
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;

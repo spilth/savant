@@ -1,10 +1,9 @@
-package org.spilth.services;
+package org.spilth.search;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.spilth.commands.SearchCommand;
 import org.spilth.models.Doc;
 import org.spilth.models.Results;
 
