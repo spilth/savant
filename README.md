@@ -1,3 +1,5 @@
+[ ![Codeship Status for spilth/savant](https://app.codeship.com/projects/e282dd80-a21a-0134-6f6a-12490b0b4938/status?branch=master)](https://app.codeship.com/projects/189924)
+
 # Savant
 
 A command-line tool to easily search Maven Central and get a `<dependency>` entry for your `pom.xml` or `compile` entry for your `build.gradle`.
