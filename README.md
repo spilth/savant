@@ -20,7 +20,7 @@ $ brew install savant
 To search Maven Central for Maven dependency coordinates:
 
 ```bash
-$ savant search hamcreat-core
+$ savant search hamcrest-core
 <dependency>
     <groupId>org.hamcrest</groupId>
     <artifactId>hamcrest-core</artifactId>
@@ -46,12 +46,12 @@ compile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.5'
 
 ### Create Maven Project
 
-You can use Savant to easily create Maven projects.
+You can also use Savant to easily create new Maven projects.
 
 #### With Defaults
 
 ```bash
-→ savant init
+$ savant init
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
@@ -85,8 +85,10 @@ You can use Savant to easily create Maven projects.
 
 #### Specify Group and Artifact IDs
 
+You can specify your group and artifact IDs with the `--groupId` and `--artifactId` command-line options, also available as `-g` and `-a`:
+
 ```bash
-$ savant init -g spilth.org -a foo
+$ savant init --groupId spilth.org -artifactId foo
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
@@ -116,7 +118,6 @@ $ savant init -g spilth.org -a foo
 [INFO] Finished at: 2016-12-11T18:07:41-05:00
 [INFO] Final Memory: 14M/153M
 [INFO] ------------------------------------------------------------------------
-
 ```
 
 ## Building from Source
