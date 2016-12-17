@@ -3,10 +3,10 @@ package org.spilth.initialize;
 import com.beust.jcommander.Parameter;
 
 public class InitializeCommand {
-    @Parameter(names = {"--groupId", "-g"}, description = "Group ID")
+    @Parameter(names = {"--groupId", "--group", "-g"}, description = "Group ID")
     private String groupId = "com.example";
 
-    @Parameter(names = {"--artifactId", "-a"}, description = "Artifact ID")
+    @Parameter(names = {"--artifactId", "--artifact", "-a"}, description = "Artifact ID")
     private String artifactId = "exampleArtifact";
 
     public String getGroupId() {
