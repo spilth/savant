@@ -1,4 +1,4 @@
-[ ![Codeship Status for spilth/savant](https://app.codeship.com/projects/e282dd80-a21a-0134-6f6a-12490b0b4938/status?branch=master)](https://app.codeship.com/projects/189924)
+[![Codeship Status for spilth/savant](https://app.codeship.com/projects/e282dd80-a21a-0134-6f6a-12490b0b4938/status?branch=master)](https://app.codeship.com/projects/189924) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8159dd599fbd49589921d51f96059ef3)](https://www.codacy.com/app/spilth/savant?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=spilth/savant&amp;utm_campaign=Badge_Grade)
 
 # Savant
 
