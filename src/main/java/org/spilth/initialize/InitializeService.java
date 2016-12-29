@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 
 public class InitializeService {
@@ -14,10 +15,13 @@ public class InitializeService {
     }
 
     public void initialize() {
-        String command = String.format(
-                "mvn archetype:generate -DgroupId=%s -DartifactId=%s -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
+        String command = format(
+                "mvn archetype:generate -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -B -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
                 initializeCommand.getGroupId(),
-                initializeCommand.getArtifactId()
+                initializeCommand.getArtifactId(),
+                "org.spilth",
+                "java8-junit4-quickstart",
+                "1.0.2"
         );
 
         try {
