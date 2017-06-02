@@ -15,13 +15,24 @@ public class InitializeService {
     }
 
     public void initialize() {
+        String archetypeName;
+        String archetypeVersion;
+
+        if (initializeCommand.isMinimal()) {
+            archetypeName = "java8-minimal-quickstart";
+            archetypeVersion = "1.0.0";
+        } else {
+            archetypeName = "java8-junit4-quickstart";
+            archetypeVersion = "1.0.2";
+        }
+
         String command = format(
                 "mvn archetype:generate -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -B -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
                 initializeCommand.getGroupId(),
                 initializeCommand.getArtifactId(),
                 "org.spilth",
-                "java8-junit4-quickstart",
-                "1.0.2"
+                archetypeName,
+                archetypeVersion
         );
 
         try {
