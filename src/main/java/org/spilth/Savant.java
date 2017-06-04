@@ -2,6 +2,8 @@ package org.spilth;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import org.spilth.dash.DashCommand;
+import org.spilth.dash.DashService;
 import org.spilth.initialize.InitializeCommand;
 import org.spilth.initialize.InitializeService;
 import org.spilth.search.SearchCommand;
@@ -17,9 +19,11 @@ public class Savant {
 
         SearchCommand searchCommand = new SearchCommand();
         InitializeCommand initializeCommand = new InitializeCommand();
+        DashCommand dashCommand = new DashCommand();
 
         jCommander.addCommand("init", initializeCommand);
         jCommander.addCommand("search", searchCommand);
+        jCommander.addCommand("dash", dashCommand);
 
         try {
             jCommander.parse(args);
@@ -29,7 +33,7 @@ public class Savant {
         }
 
         if (jCommander.getParsedCommand() == null) {
-            System.out.println("The following commands are available: search, init");
+            System.out.println("The following commands are available: init, dash, search");
             System.exit(1);
         }
 
@@ -39,6 +43,9 @@ public class Savant {
         } else if (jCommander.getParsedCommand().equals("init")) {
             InitializeService initializeService = new InitializeService(initializeCommand);
             initializeService.initialize();
+        } else if (jCommander.getParsedCommand().equals("dash")) {
+            DashService dashService = new DashService(dashCommand);
+            dashService.initialize();
         }
     }
 }

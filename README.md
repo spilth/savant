@@ -13,6 +13,6 @@ If you want to build the tool from source, do the following:
 $ git clone git@github.com:spilth/savant.git
 $ cd savant
 $ mvn package
-$ alias savant="java -jar target/savant-1.0-SNAPSHOT.jar"
+$ alias savant="java -jar target/savant-1.3.0-SNAPSHOT.jar"
 $ savant search hamcrest-core
 ```

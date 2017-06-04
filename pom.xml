@@ -5,7 +5,7 @@
     <groupId>org.spilth</groupId>
     <artifactId>savant</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 
     <name>savant</name>
     <url>https://github.com/spilth/savant</url>
@@ -34,6 +34,11 @@
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
             <version>1.58</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.5.0</version>
         </dependency>
     </dependencies>
 
