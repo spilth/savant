@@ -20,12 +20,10 @@ public class DashService {
         this.dashCommand = dashCommand;
     }
 
-    public void initialize() {
+    public void installDocs() {
         String pomFilename = dashCommand.getPomFile();
-
-        MavenXpp3Reader mavenXpp3Reader = new MavenXpp3Reader();
-
         File pomFile = new File(pomFilename);
+        MavenXpp3Reader mavenXpp3Reader = new MavenXpp3Reader();
 
         try {
             Model model = mavenXpp3Reader.read(new FileReader(pomFile));

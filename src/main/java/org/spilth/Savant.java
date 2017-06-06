@@ -56,7 +56,7 @@ public class Savant {
                     jCommander.usage("dash");
                 } else {
                     DashService dashService = new DashService(dashCommand);
-                    dashService.initialize();
+                    dashService.installDocs();
                 }
             }
         }
