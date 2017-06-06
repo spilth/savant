@@ -5,7 +5,7 @@
     <groupId>org.spilth</groupId>
     <artifactId>savant</artifactId>
     <packaging>jar</packaging>
-    <version>1.5.0</version>
+    <version>1.5.1</version>
 
     <name>savant</name>
     <url>https://github.com/spilth/savant</url>

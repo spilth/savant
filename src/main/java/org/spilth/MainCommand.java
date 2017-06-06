@@ -3,7 +3,7 @@ package org.spilth;
 import com.beust.jcommander.Parameter;
 
 public class MainCommand {
-    @Parameter(names = {"--version", "-v"}, description = "Display the version of savant")
+    @Parameter(names = {"--version", "-v"}, description = "Display the version of savant", help = true)
     private boolean version;
 
     @Parameter(names = {"--help", "-h"}, description = "Display help for savant", help = true)
