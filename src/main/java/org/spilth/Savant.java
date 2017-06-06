@@ -11,8 +11,9 @@ import org.spilth.search.SearchService;
 
 import java.io.IOException;
 
-public class Savant {
+import static java.lang.System.out;
 
+public class Savant {
     public static void main(String[] args ) throws IOException {
         MainCommand mainCommand = new MainCommand();
         JCommander jCommander = new JCommander(mainCommand);
@@ -28,24 +29,26 @@ public class Savant {
         try {
             jCommander.parse(args);
         } catch (ParameterException parameterException) {
-            System.out.println(parameterException.getMessage());
+            out.println(parameterException.getMessage());
             System.exit(1);
         }
 
         if (jCommander.getParsedCommand() == null) {
-            System.out.println("The following commands are available: init, dash, search");
-            System.exit(1);
-        }
-
-        if (jCommander.getParsedCommand().equals("search")) {
-            SearchService searchService = new SearchService(searchCommand);
-            searchService.search();
-        } else if (jCommander.getParsedCommand().equals("init")) {
-            InitializeService initializeService = new InitializeService(initializeCommand);
-            initializeService.initialize();
-        } else if (jCommander.getParsedCommand().equals("dash")) {
-            DashService dashService = new DashService(dashCommand);
-            dashService.initialize();
+            out.println("usage: savant command [options]");
+            out.println();
+            out.println("The following commands are available: init, dash, search");
+            out.println();
+        } else {
+            if (jCommander.getParsedCommand().equals("search")) {
+                SearchService searchService = new SearchService(searchCommand);
+                searchService.search();
+            } else if (jCommander.getParsedCommand().equals("init")) {
+                InitializeService initializeService = new InitializeService(initializeCommand);
+                initializeService.initialize();
+            } else if (jCommander.getParsedCommand().equals("dash")) {
+                DashService dashService = new DashService(dashCommand);
+                dashService.initialize();
+            }
         }
     }
 }
