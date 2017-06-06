@@ -14,7 +14,7 @@ public class InitializeCommand {
     @Parameter(names = {"--minimal", "-m"}, description = "Use Minimal Java 8 Archetype")
     private boolean minimal = false;
 
-    @Parameter(names = {"--help", "-h"}, help = true)
+    @Parameter(names = {"--help", "-h"}, description = "Show help", help = true)
     private boolean help = false;
 
     public String getGroupId() {

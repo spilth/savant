@@ -14,7 +14,7 @@ public class SearchCommand {
     @Parameter(names = {"--format", "-f"}, description = "Dependency output format", validateWith = FormatValidator.class)
     private String format = "maven";
 
-    @Parameter(names = {"--help", "-h"}, help = true)
+    @Parameter(names = {"--help", "-h"}, description = "Show help", help = true)
     private boolean help = false;
 
     public String getFormat() {
