@@ -10,11 +10,15 @@ import org.spilth.search.SearchCommand;
 import org.spilth.search.SearchService;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import static java.lang.System.out;
+import static java.util.ResourceBundle.getBundle;
 
 public class Savant {
     public static void main(String[] args ) throws IOException {
+        ResourceBundle messages = getBundle("MessagesBundle");
+
         MainCommand mainCommand = new MainCommand();
         JCommander jCommander = new JCommander(mainCommand);
 
@@ -22,7 +26,7 @@ public class Savant {
         InitializeCommand initializeCommand = new InitializeCommand();
         DashCommand dashCommand = new DashCommand();
 
-        jCommander.setProgramName("savant");
+        jCommander.setProgramName(messages.getString("programName"));
         jCommander.addCommand(initializeCommand);
         jCommander.addCommand(searchCommand);
         jCommander.addCommand(dashCommand);
@@ -35,7 +39,11 @@ public class Savant {
         }
 
         if (jCommander.getParsedCommand() == null) {
-            jCommander.usage();
+            if (mainCommand.isVersion()) {
+                out.printf("%s%n", messages.getString("version"));
+            } else {
+                jCommander.usage();
+            }
         } else {
             if (jCommander.getParsedCommand().equals("search")) {
                 if (searchCommand.isHelp()) {
