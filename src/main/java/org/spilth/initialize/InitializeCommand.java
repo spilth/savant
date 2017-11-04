@@ -2,6 +2,7 @@ package org.spilth.initialize;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import org.spilth.validators.LanguageValidator;
 
 @Parameters(commandNames = "init", commandDescription = "Initializes a new Java 8 Maven project")
 public class InitializeCommand {
@@ -10,6 +11,9 @@ public class InitializeCommand {
 
     @Parameter(names = {"--artifactId", "--artifact", "-a"}, description = "Artifact ID")
     private String artifactId = "exampleArtifact";
+
+    @Parameter(names = {"--language", "-l"}, description = "Project Type", validateWith = LanguageValidator.class)
+    private String language = "java";
 
     @Parameter(names = {"--minimal", "-m"}, description = "Use Minimal Java 8 Archetype")
     private boolean minimal = false;
@@ -25,6 +29,10 @@ public class InitializeCommand {
         return artifactId;
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
     public boolean isMinimal() {
         return minimal;
     }
@@ -32,4 +40,5 @@ public class InitializeCommand {
     public boolean isHelp() {
         return help;
     }
+
 }

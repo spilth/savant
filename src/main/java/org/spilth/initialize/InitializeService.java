@@ -16,21 +16,28 @@ public class InitializeService {
 
     public void initialize() {
         String archetypeName;
+        String archetypeGroupId = "org.spilth";
         String archetypeVersion;
 
         if (initializeCommand.isMinimal()) {
             archetypeName = "java8-minimal-quickstart";
             archetypeVersion = "1.0.0";
         } else {
-            archetypeName = "java8-junit4-quickstart";
-            archetypeVersion = "1.0.2";
+            if (initializeCommand.getLanguage().equals("kotlin")) {
+                archetypeName = "kotlin-archetype-jvm";
+                archetypeVersion = "1.1.51";
+                archetypeGroupId = "org.jetbrains.kotlin";
+            } else {
+                archetypeName = "java8-junit4-quickstart";
+                archetypeVersion = "1.0.2";
+            }
         }
 
         String command = format(
                 "mvn archetype:generate -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -B -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
                 initializeCommand.getGroupId(),
                 initializeCommand.getArtifactId(),
-                "org.spilth",
+                archetypeGroupId,
                 archetypeName,
                 archetypeVersion
         );
