@@ -19,22 +19,26 @@ public class InitializeService {
         String archetypeGroupId = "org.spilth";
         String archetypeVersion;
 
-        if (initializeCommand.isMinimal()) {
-            archetypeName = "java8-minimal-quickstart";
-            archetypeVersion = "1.0.0";
-        } else {
-            if (initializeCommand.getLanguage().equals("kotlin")) {
+        switch (initializeCommand.getLanguage()) {
+            case "kotlin":
                 archetypeName = "kotlin-archetype-jvm";
                 archetypeVersion = "1.1.51";
                 archetypeGroupId = "org.jetbrains.kotlin";
-            } else {
-                archetypeName = "java8-junit4-quickstart";
-                archetypeVersion = "1.0.2";
-            }
+                break;
+
+            case "java8":
+                archetypeName = "java8-minimal-quickstart";
+                archetypeVersion = "1.0.0";
+                break;
+
+            default:
+                archetypeName = "java9-minimal-quickstart";
+                archetypeVersion = "1.0.0";
+                break;
         }
 
         String command = format(
-                "mvn archetype:generate -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -B -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
+                "mvn archetype:generate --batch-mode -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -Dmaven.multiModuleProjectDirectory=$MAVEN_HOME",
                 initializeCommand.getGroupId(),
                 initializeCommand.getArtifactId(),
                 archetypeGroupId,
@@ -43,6 +47,8 @@ public class InitializeService {
         );
 
         try {
+            out.println("\u001B[32mCreating project '" + initializeCommand.getArtifactId() + "'...\u001B[0m");
+
             Process process = Runtime.getRuntime().exec(command);
             BufferedReader bufferedReader = new BufferedReader(
                     new InputStreamReader(process.getInputStream())
@@ -51,6 +57,8 @@ public class InitializeService {
             while ((line = bufferedReader.readLine()) != null) {
                 out.println(line);
             }
+
+            out.println("Project created in directory " + initializeCommand.getArtifactId());
         } catch (IOException e) {
             e.printStackTrace();
         }

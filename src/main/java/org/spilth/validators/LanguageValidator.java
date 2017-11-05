@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LanguageValidator implements IParameterValidator {
-    public static final List<String> VALID_TYPES = Arrays.asList("java", "kotlin");
+    public static final List<String> VALID_TYPES = Arrays.asList("java", "java8", "kotlin");
 
     @Override
     public void validate(String name, String value) throws ParameterException {
         if (!VALID_TYPES.contains(value)) {
-            throw new ParameterException(String.format("Parameter %s needs to be either `java` or `kotlin`.", name));
+            throw new ParameterException(String.format("Parameter %s needs to be either `java`, `java8`, or `kotlin`.", name));
         }
     }
 }
