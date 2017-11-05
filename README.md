@@ -3,7 +3,7 @@
 
 # Savant
 
-Savant is a command-line tool that aims to make working with [Maven](http://maven.apache.org) easier on macOS. It can be used to quickly initialize Java 8 Maven projects, search for dependencies and add JavaDocs to [Dash](https://kapeli.com).
+Savant is a command-line tool that aims to make working with [Maven](http://maven.apache.org) easier on macOS. It can be used to quickly initialize Java & Kotlin Maven projects, search for dependencies and to add JavaDocs for your dependencies to [Dash](https://kapeli.com).
 
 End-user documentation can be found at <http://spilth.org/projects/savant/>
 
