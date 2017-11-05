@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+mvn -B -U clean package
+NOW=$(date +"%m-%d-%y_%H-%M-%S")
+mkdir -p target/homebrew/savant/bin
+mkdir -p target/homebrew/savant/lib
+cp src/main/bash/savant target/homebrew/savant/bin/
+cp target/savant*.jar target/homebrew/savant/lib/
+pushd target/homebrew
+tar -cf savant-$NOW.tar savant
+gzip savant-$NOW.tar
+shasum -a 256 savant-$NOW.tar.gz
+popd
