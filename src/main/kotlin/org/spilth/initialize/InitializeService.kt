@@ -7,37 +7,26 @@ import java.io.InputStreamReader
 import java.lang.String.format
 
 class InitializeService(private val initializeCommand: InitializeCommand) {
+    private data class Archetype (val groupId: String, val artifactId: String, val version: String)
+
+    private val java9Archetype = Archetype(groupId = "org.spilth", artifactId = "java9-minimal-quickstart", version = "1.0.0")
+    private val java8Archetype = Archetype(groupId = "org.spilth", artifactId = "java8-minimal-quickstart", version = "1.0.0")
+    private val kotlinArchetype = Archetype(groupId = "org.jetbrains.kotlin", artifactId = "kotlin-archetype-jvm", version = "1.1.51")
 
     fun initialize() {
-        val archetypeName: String
-        var archetypeGroupId = "org.spilth"
-        val archetypeVersion: String
-
-        when (initializeCommand.language) {
-            "kotlin" -> {
-                archetypeName = "kotlin-archetype-jvm"
-                archetypeVersion = "1.1.51"
-                archetypeGroupId = "org.jetbrains.kotlin"
-            }
-
-            "java8" -> {
-                archetypeName = "java8-minimal-quickstart"
-                archetypeVersion = "1.0.0"
-            }
-
-            else -> {
-                archetypeName = "java9-minimal-quickstart"
-                archetypeVersion = "1.0.0"
-            }
+        val archetype: Archetype = when (initializeCommand.language) {
+            "kotlin" -> kotlinArchetype
+            "java8" -> java8Archetype
+            else -> java9Archetype
         }
 
         val command = format(
                 "mvn archetype:generate --batch-mode -DgroupId=%s -DartifactId=%s -DarchetypeGroupId=%s -DarchetypeArtifactId=%s -DarchetypeVersion=%s -Dmaven.multiModuleProjectDirectory=\$MAVEN_HOME",
                 initializeCommand.groupId,
                 initializeCommand.artifactId,
-                archetypeGroupId,
-                archetypeName,
-                archetypeVersion
+                archetype.groupId,
+                archetype.artifactId,
+                archetype.version
         )
 
         try {

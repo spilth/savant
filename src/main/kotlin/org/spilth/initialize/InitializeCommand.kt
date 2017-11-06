@@ -9,11 +9,11 @@ class InitializeCommand {
     @Parameter(names = arrayOf("--groupId", "--group", "-g"), description = "Group ID")
     var groupId = "com.example"
 
-    @Parameter(names = arrayOf("--artifactId", "--artifact", "-a"), description = "Artifact ID")
-    var artifactId = "exampleArtifact"
+    @Parameter(description = "Artifact ID", required = true)
+    var artifactId : String? = null
 
-    @Parameter(names = arrayOf("--language", "-l"), description = "Project Language (java, java8 or kotlin)", required = true, validateWith = arrayOf(LanguageValidator::class))
-    var language = ""
+    @Parameter(names = arrayOf("--language", "-l"), description = "Language (java, java8 or kotlin)", required = true, validateWith = arrayOf(LanguageValidator::class))
+    var language : String? = null
 
     @Parameter(names = arrayOf("--help", "-h"), description = "Show help", help = true)
     var isHelp = false
