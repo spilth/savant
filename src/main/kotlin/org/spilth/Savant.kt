@@ -33,7 +33,7 @@ object Savant {
         try {
             jCommander.parse(*args)
         } catch (parameterException: ParameterException) {
-            out.println(parameterException.message)
+            println(parameterException.message)
             System.exit(1)
         }
 

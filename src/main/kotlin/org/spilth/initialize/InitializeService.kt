@@ -5,7 +5,6 @@ import java.io.IOException
 import java.io.InputStreamReader
 
 import java.lang.String.format
-import java.lang.System.out
 
 class InitializeService(private val initializeCommand: InitializeCommand) {
 
@@ -42,7 +41,7 @@ class InitializeService(private val initializeCommand: InitializeCommand) {
         )
 
         try {
-            out.println("\u001B[32mCreating project '" + initializeCommand.artifactId + "'...\u001B[0m")
+            println("\u001B[32mCreating project '" + initializeCommand.artifactId + "'...\u001B[0m")
 
             val process = Runtime.getRuntime().exec(command)
             val bufferedReader = BufferedReader(
@@ -53,10 +52,9 @@ class InitializeService(private val initializeCommand: InitializeCommand) {
                 println(it.readText())
             }
 
-            out.println("Project created in directory " + initializeCommand.artifactId)
+            println("Project created in directory " + initializeCommand.artifactId)
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 }

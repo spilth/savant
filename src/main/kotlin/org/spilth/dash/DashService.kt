@@ -3,13 +3,10 @@ package org.spilth.dash
 import org.apache.maven.model.Dependency
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException
-
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
-
 import java.lang.String.format
-import java.lang.System.out
 
 class DashService(private val dashCommand: DashCommand) {
 
@@ -41,7 +38,7 @@ class DashService(private val dashCommand: DashCommand) {
         val artifactId = dependency.artifactId
         val version = dependency.version
 
-        out.println(format("Requesting docs for %s:%s:%s", groupId, artifactId, version))
+        println(format("Requesting docs for %s:%s:%s", groupId, artifactId, version))
 
         val url = format(
                 "dash-install://repo_name=Java Docsets&entry_name=%s:%s&version=%s",
