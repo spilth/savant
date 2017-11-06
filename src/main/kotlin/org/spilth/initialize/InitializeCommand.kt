@@ -7,14 +7,14 @@ import org.spilth.validators.LanguageValidator
 @Parameters(commandNames = arrayOf("init"), commandDescription = "Initializes a new Maven project")
 class InitializeCommand {
     @Parameter(names = arrayOf("--groupId", "--group", "-g"), description = "Group ID")
-    val groupId = "com.example"
+    var groupId = "com.example"
 
     @Parameter(names = arrayOf("--artifactId", "--artifact", "-a"), description = "Artifact ID")
-    val artifactId = "exampleArtifact"
+    var artifactId = "exampleArtifact"
 
-    @Parameter(names = arrayOf("--language", "-l"), description = "Project Language (java, java8 or kotlin)", validateWith = arrayOf(LanguageValidator::class))
-    val language = "java"
+    @Parameter(names = arrayOf("--language", "-l"), description = "Project Language (java, java8 or kotlin)", required = true, validateWith = arrayOf(LanguageValidator::class))
+    var language = ""
 
     @Parameter(names = arrayOf("--help", "-h"), description = "Show help", help = true)
-    val isHelp = false
+    var isHelp = false
 }

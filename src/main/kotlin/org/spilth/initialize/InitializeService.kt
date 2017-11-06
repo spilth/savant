@@ -48,10 +48,9 @@ class InitializeService(private val initializeCommand: InitializeCommand) {
             val bufferedReader = BufferedReader(
                     InputStreamReader(process.inputStream)
             )
-            var line: String = bufferedReader.readLine()
-            while (line != null) {
-                out.println(line)
-                line = bufferedReader.readLine()
+
+            bufferedReader.use {
+                println(it.readText())
             }
 
             out.println("Project created in directory " + initializeCommand.artifactId)
