@@ -51,10 +51,10 @@ class SearchService(private val searchCommand: SearchCommand) {
                 out.printf("</dependency>%n")
             } else {
                 out.printf(
-                    "compile group: '%s', name: '%s', version: '%s'%n",
-                    doc.groupId,
-                    doc.artifactId,
-                    doc.latestVersion
+                        "compile group: '%s', name: '%s', version: '%s'%n",
+                        doc.groupId,
+                        doc.artifactId,
+                        doc.latestVersion
                 )
             }
         }

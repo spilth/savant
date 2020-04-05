@@ -2,7 +2,6 @@ package org.spilth.validators
 
 import com.beust.jcommander.IParameterValidator
 import com.beust.jcommander.ParameterException
-import java.util.*
 
 class FormatValidator : IParameterValidator {
 
@@ -14,6 +13,6 @@ class FormatValidator : IParameterValidator {
     }
 
     companion object {
-        val VALID_FORMATS = Arrays.asList("maven", "gradle")
+        val VALID_FORMATS: List<String> = listOf("maven", "gradle")
     }
 }

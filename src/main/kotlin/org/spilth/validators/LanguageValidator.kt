@@ -2,7 +2,6 @@ package org.spilth.validators
 
 import com.beust.jcommander.IParameterValidator
 import com.beust.jcommander.ParameterException
-import java.util.*
 
 class LanguageValidator : IParameterValidator {
 
@@ -14,6 +13,6 @@ class LanguageValidator : IParameterValidator {
     }
 
     companion object {
-        val VALID_TYPES = Arrays.asList("java", "java8", "kotlin")
+        val VALID_TYPES: List<String> = listOf("java", "java8", "kotlin")
     }
 }

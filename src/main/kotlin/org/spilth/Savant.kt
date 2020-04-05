@@ -11,6 +11,7 @@ import org.spilth.search.SearchService
 import java.io.IOException
 import java.lang.System.out
 import java.util.ResourceBundle.getBundle
+import kotlin.system.exitProcess
 
 object Savant {
     @Throws(IOException::class)
@@ -34,7 +35,7 @@ object Savant {
             jCommander.parse(*args)
         } catch (parameterException: ParameterException) {
             println(parameterException.message)
-            System.exit(1)
+            exitProcess(1)
         }
 
         if (jCommander.parsedCommand == null) {
@@ -44,28 +45,26 @@ object Savant {
                 else -> jCommander.usage()
             }
         } else {
-            when {
-                jCommander.parsedCommand == "search" -> {
+            when (jCommander.parsedCommand) {
+                "search" -> {
                     if (searchCommand.isHelp) {
-                        jCommander.usage("search")
+                        jCommander.usage()
                     } else {
                         val searchService = SearchService(searchCommand)
                         searchService.search()
                     }
                 }
-
-                jCommander.parsedCommand == "init" -> {
+                "init" -> {
                     if (initializeCommand.isHelp) {
-                        jCommander.usage("init")
+                        jCommander.usage()
                     } else {
                         val initializeService = InitializeService(initializeCommand)
                         initializeService.initialize()
                     }
                 }
-
-                jCommander.parsedCommand == "dash" -> {
+                "dash" -> {
                     if (dashCommand.isHelp) {
-                        jCommander.usage("dash")
+                        jCommander.usage()
                     } else {
                         val dashService = DashService(dashCommand)
                         dashService.installDocs()

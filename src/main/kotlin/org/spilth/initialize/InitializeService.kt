@@ -7,7 +7,7 @@ import java.io.InputStreamReader
 import java.lang.String.format
 
 class InitializeService(private val initializeCommand: InitializeCommand) {
-    private data class Archetype (val groupId: String, val artifactId: String, val version: String)
+    private data class Archetype(val groupId: String, val artifactId: String, val version: String)
 
     private val java9Archetype = Archetype(groupId = "org.spilth", artifactId = "java9-minimal-quickstart", version = "1.0.0")
     private val java8Archetype = Archetype(groupId = "org.spilth", artifactId = "java8-minimal-quickstart", version = "1.0.0")
